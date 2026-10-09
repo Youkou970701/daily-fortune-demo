@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>今日运势卡</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="workspace" aria-label="今日运势生成器">
+        <div class="panel controls-panel">
+          <div class="brand-row">
+            <div class="brand-mark">今</div>
+            <div>
+              <h1>今日运势卡</h1>
+              <p>给朋友看的轻量小卡，不用 API，不用登录。</p>
+            </div>
+          </div>
+
+          <form id="fortuneForm" class="fortune-form">
+            <label class="field">
+              <span>昵称</span>
+              <input id="nickname" maxlength="12" placeholder="比如：小林" value="今天的我" />
+            </label>
+
+            <div class="field">
+              <span>今天想看哪方面</span>
+              <div class="segmented" role="radiogroup" aria-label="方向">
+                <label><input type="radio" name="topic" value="work" checked />工作</label>
+                <label><input type="radio" name="topic" value="money" />搞钱</label>
+                <label><input type="radio" name="topic" value="love" />感情</label>
+                <label><input type="radio" name="topic" value="study" />学习</label>
+                <label><input type="radio" name="topic" value="social" />人际</label>
+                <label><input type="radio" name="topic" value="random" />随机</label>
+              </div>
+            </div>
+
+            <div class="field">
+              <span>今日状态</span>
+              <div class="mood-grid" role="radiogroup" aria-label="心情">
+                <label><input type="radio" name="mood" value="tired" checked />有点累</label>
+                <label><input type="radio" name="mood" value="money" />想搞钱</label>
+                <label><input type="radio" name="mood" value="calm" />想躺平</label>
+                <label><input type="radio" name="mood" value="fire" />很有劲</label>
+              </div>
+            </div>
+
+            <div class="field">
+              <span>卡片风格</span>
+              <div class="segmented compact" role="radiogroup" aria-label="卡片风格">
+                <label><input type="radio" name="tone" value="soft" checked />温柔</label>
+                <label><input type="radio" name="tone" value="funny" />嘴贫</label>
+                <label><input type="radio" name="tone" value="clean" />清醒</label>
+              </div>
+            </div>
+
+            <div class="actions">
+              <button type="submit" class="primary-btn">生成今日卡</button>
+              <button type="button" id="rerollBtn" class="secondary-btn">换一签</button>
+              <button type="button" id="downloadBtn" class="icon-btn" aria-label="下载卡片" title="下载卡片">
+                <span aria-hidden="true">↓</span>
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <section class="preview-panel" aria-label="运势卡预览">
+          <article id="fortuneCard" class="fortune-card" data-theme="mint">
+            <div class="card-orbit">
+              <span></span><span></span><span></span>
+            </div>
+            <header class="card-header">
+              <div>
+                <p class="eyebrow" id="cardDate">TODAY</p>
+                <h2 id="cardName">今天的我</h2>
+              </div>
+              <div class="score-badge">
+                <span id="score">86</span>
+                <small>能量</small>
+              </div>
+            </header>
+
+            <div class="keyword-block">
+              <p>今日关键词</p>
+              <strong id="keyword">稳住</strong>
+            </div>
+
+            <p id="mainReading" class="main-reading">
+              今天适合收尾，不适合硬开新坑。把复杂的事拆成一个 20 分钟动作，会比硬撑更有用。
+            </p>
+
+            <div class="mini-grid">
+              <div>
+                <span>幸运色</span>
+                <strong id="luckyColor">薄荷绿</strong>
+              </div>
+              <div>
+                <span>幸运物</span>
+                <strong id="luckyItem">空白备忘录</strong>
+              </div>
+            </div>
+
+            <div class="dos">
+              <div>
+                <span>宜</span>
+                <p id="doText">整理计划，主动确认</p>
+              </div>
+              <div>
+                <span>忌</span>
+                <p id="dontText">临时答应，冲动下单</p>
+              </div>
+            </div>
+
+            <footer class="card-footer">
+              <p id="shareLine">今天不用证明全部，先把一件小事做完。</p>
+              <span>daily-fortune</span>
+            </footer>
+          </article>
+        </section>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
